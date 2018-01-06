@@ -21,6 +21,21 @@
 			{color:grey;text-decoration:none;font-style:italic;}
 		table
 			{border-collapse: separate; border-spacing: 120px 0; margin: auto; padding-top: 50px;}
+		div a
+			{text-align:center; width: 300px}
+		.flex-container
+			{display: flex;
+			flex-warp: wrap;
+			align-content: flex-start;
+			justify-content: center;
+			align-items: center;
+			align-content: space-around;}
+		.flex-container > div {
+	  	display: flex;
+	  	flex-direction: column;
+	  	align-items: center;
+	  	text-align: center;
+			color: black;text-decoration: none}
 		</style>
 	</head>
 	<body>
@@ -37,16 +52,13 @@
 					</tr>
 		</table>
     <h3 style="text-align:center"> Fashion</h3>
-			<table Style="margin:auto">
-				<tr>
-					<td><img class="resize" src="Pictures\fashion1_480.jpg" />
-					<td><img class="resize" src="Pictures\fashion2_480.jpg" />
-					<td><img class="resize" src="Pictures\fashion3_480.jpg" />
-					<td><img class="resize" src="Pictures\fashion4_360.png" />
-				</tr>
-				<tr style="text-align:center">
-					<td>Sample Text Link?</td>
-					<td>Sample Text Link?</td>
-					<td>Sample Text Link?</td>
-          <td>Sample Text Link?</td>
-				</tr>
+		<div class="flex-container">
+			<div><img class="resize" src="Pictures\fashion1_480.jpg" />
+				<a href="https://www.amazon.com/gp/product/B001NZH1J4/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Shoes</a></div>
+			<div><img class="resize" src="Pictures\fashion2_480.jpg" />
+				<a href="https://www.amazon.com/ByTheR-Styling-Renewal-Eastern-Oriental/dp/B0773MP1WC/ref=sr_1_15?s=apparel&ie=UTF8&qid=1515085694&sr=1-15&nodeID=7141123011&psd=1&keywords=hanbok+men">Hanbok</a></div>
+			<div><img class="resize" src="Pictures\fashion3_480.jpg" />
+				<a href="https://www.amazon.com/gp/product/B01A5Q8YJC/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Watch</a></div>
+			<div><img class="resize" src="Pictures\fashion4_360.png" />
+				<a href="https://www.amazon.com/gp/product/B01DIIOZIS/ref=oh_aui_search_detailpage?ie=UTF8&psc=1">Belt</a></div>
+		</div>

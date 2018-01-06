@@ -21,13 +21,28 @@
 			{color:grey;text-decoration:none;font-style:italic;}
 		table
 			{border-collapse: separate; border-spacing: 120px 0; margin: auto; padding-top: 50px;}
+		div a
+			{text-align:center; width: 300px}
+		.flex-container
+			{display: flex;
+			flex-warp: wrap;
+			align-content: flex-start;
+			justify-content: center;
+			align-items: center;
+			align-content: space-around;}
+		.flex-container > div {
+	  	display: flex;
+	  	flex-direction: column;
+	  	align-items: center;
+	  	text-align: center;
+			color: black;text-decoration: none}
 		</style>
 	</head>
 	<body>
 			<h1>TIM'S TOP TEN</h1>
 			<h2>THE GOOD STUFF</h2>
-			<table style="margin:auto">
-					<tr style="text-align:center">
+		<table>
+				<tr style="text-align:center">
 					<td style=color:Dark_green>Technology</td>
 					<td><a href="Fashion.html">Fashion</a></td>
 					<td><a href="Gaming.html">Gaming</a></td>
@@ -37,14 +52,11 @@
 				</tr>
 		</table>
 		<h3 style="text-align:center"> Technology</h3>
-			<table Style="margin:auto">
-				<tr>
-					<td><img class="resize" src="Pictures\technology_720.jpg" />
-					<td><img class="resize" src="Pictures\technology2_720.jpg" />
-					<td><img class="resize" src="Pictures\technology3_720.jpg" />
-				</tr>
-				<tr style="text-align:center">
-					<td>Sample Text Link?</td>
-					<td>Sample Text Link?</td>
-					<td>Sample Text Link?</td>
-				</tr>
+			<div class="flex-container">
+				<div><img class="resize" src="Pictures\technology_720.jpg"/>
+					<a href="https://www.amazon.com/gp/product/B00DYQYJ0E/ref=oh_aui_detailpage_o05_s00?ie=UTF8&psc=1">Flash Drive</a></div>
+				<div><img class="resize" src="Pictures\technology2_720.jpg" />
+					<a href="https://www.amazon.com/gp/product/B00U3FPN4U/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1">Amazon Fire TV</a></div>
+				<div><img class="resize" src="Pictures\technology3_720.jpg" />
+					<a href="https://www.amazon.com/gp/product/B01N57WL39/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1">Mechanical Keyboard</a></div>
+			</div>
