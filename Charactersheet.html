@@ -1,3 +1,29 @@
+<script>
+    function strmodcalc(){
+      var x = (("+")+(((document.getElementById('Strscore').value)-10)/2));
+      document.getElementById('StrMod').value = x;
+    }
+    function dexmodcalc(){
+      var x = (("+")+(((document.getElementById('Dexscore').value)-10)/2));
+      document.getElementById('DexMod').value = x;
+    }
+    function conmodcalc(){
+      var x = (("+")+(((document.getElementById('Conscore').value)-10)/2));
+      document.getElementById('ConMod').value = x;
+    }
+    function wismodcalc(){
+      var x = (("+")+(((document.getElementById('Wisscore').value)-10)/2));
+      document.getElementById('WisMod').value = x;
+    }
+    function intmodcalc(){
+      var x = (("+")+(((document.getElementById('Intscore').value)-10)/2));
+      document.getElementById('IntMod').value = x;
+    }
+    function chamodcalc(){
+      var x = (("+")+(((document.getElementById('Chascore').value)-10)/2));
+      document.getElementById('ChaMod').value = x;
+    }
+</script>
 <head>
   <link rel="stylesheet" type="text/css" href="charachter sheet.css"/>
 </head>
@@ -21,7 +47,7 @@
           <label for="race">Race</label><input name="race" placeholder="Human" />
         </li>
         <li>
-          <label for="alignment">Alignment</label><input name="alignment" placeholder="Neutral" />
+          <label for="alignment">Alignment</label><input name="alignment" placeholder="Nuetral" />
         </li>
         <li>
           <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="0" />
@@ -36,50 +62,50 @@
           <ul>
             <li>
               <div class="score">
-                <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" class="stat"/>
+                <label for="Strengthscore">Strength</label><input onchange="strmodcalc()" name="Strengthscore" placeholder="10" class="stat" id="Strscore"/>
               </div>
               <div class="modifier">
-                <input name="Strengthmod" placeholder="+0" class="statmod"/>
+                <input id=StrMod name="Strengthmod" placeholder="+0" class="statmod"/>
               </div>
             </li>
             <li>
               <div class="score">
-                <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" class="stat"/>
+                <label for="Dexterityscore">Dexterity</label><input onchange="dexmodcalc()" name="Dexterityscore" placeholder="10" class="stat" id="Dexscore"/>
               </div>
               <div class="modifier">
-                <input name="Dexteritymod" placeholder="+0" class=statmod/>
+                <input id=DexMod name="Dexteritymod" placeholder="+0" class=statmod/>
               </div>
             </li>
             <li>
               <div class="score">
-                <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" class="stat"/>
+                <label for="Constitutionscore">Constitution</label><input onchange="conmodcalc()" name="Constitutionscore" placeholder="10" class="stat" id="Conscore"/>
               </div>
               <div class="modifier">
-                <input name="Constitutionmod" placeholder="+0" class="statmod"/>
+                <input id=ConMod name="Constitutionmod" placeholder="+0" class="statmod"/>
               </div>
             </li>
             <li>
               <div class="score">
-                <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" class="stat"/>
+                <label for="Wisdomscore">Wisdom</label><input onchange="wismodcalc()" name="Wisdomscore" placeholder="10" class="stat" id="Wisscore"/>
               </div>
               <div class="modifier">
-                <input name="Wisdommod" placeholder="+0" />
+                <input id=WisMod name="Wisdommod" placeholder="+0" />
               </div>
             </li>
             <li>
               <div class="score">
-                <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" class="stat"/>
+                <label for="Intelligencescore">Intelligence</label><input onchange="intmodcalc()" name="Intelligencescore" placeholder="10" class="stat" id="Intscore"/>
               </div>
               <div class="modifier">
-                <input name="Intelligencemod" placeholder="+0" class="statmod"/>
+                <input id=IntMod name="Intelligencemod" placeholder="+0" class="statmod"/>
               </div>
             </li>
             <li>
               <div class="score">
-                <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" class="stat"/>
+                <label for="Charismascore">Charisma</label><input onchange="chamodcalc()" name="Charismascore" placeholder="10" class="stat" id="Chascore"/>
               </div>
               <div class="modifier">
-                <input name="Charismamod" placeholder="+0" class="statmod"/>
+                <input id=ChaMod name="Charismamod" placeholder="+0" class="statmod"/>
               </div>
             </li>
           </ul>
