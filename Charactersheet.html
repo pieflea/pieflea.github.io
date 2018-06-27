@@ -2,7 +2,7 @@
     var x = 0
 
     var StrSkills = ["Strength_Save","Athletics"]
-    var DexSkills = ["Dex_Save","Acrobatics","Sleight_of_Hand","Stealth"]
+    var DexSkills = ["Dex_Save","Acrobatics","Sleight_of_Hand","Stealth","Initiative"]
     var ConSkills = ["Con_Save"]
     var IntSkills = ["Int_Save","Arcana","History","Investigation","Nature","Religion"]
     var WisSkills = ["Wis_Save","Animal_Handling","Insight","Medicine","Perception","Survival"]
@@ -10,9 +10,25 @@
 
     function modcalc(Score,Mod,SkillArray){
       var x = Math.floor(((((document.getElementById(Score).value)-10)/2)));
+      if (x >= 0){
       document.getElementById(Mod).value = ("+") +  x;
-      for (i=0;i<SkillArray.length;i++){document.getElementById(SkillArray[i]).value += ("+" + x)}
+        for (i=0;i<SkillArray.length;i++){document.getElementById(SkillArray[i]).value = ("+" + x)}
     }
+      else {document.getElementById(Mod).value = x;
+        for (i=0;i<SkillArray.length;i++){document.getElementById(SkillArray[i]).value = (x)}}
+    }
+    function ProfCheck(Skill,SkillCheckBox,Score){
+      if (document.getElementById(SkillCheckBox).checked == true) {
+        x = Math.floor(((((document.getElementById(Score).value)-10)/2))) + 2
+      }
+      else {
+        x = Math.floor(((((document.getElementById(Score).value)-10)/2)));
+    }
+      if (x >= 0){
+      document.getElementById(Skill).value = ("+") + x;}
+      else {
+      document.getElementById(Skill).value = (x);}
+      }
 </script>
 <head>
   <link rel="stylesheet" type="text/css" href="charachter sheet.css"/>
@@ -20,7 +36,7 @@
 <form class="charsheet">
   <header>
     <section class="charname">
-      <label for="charname">Character Name</label><input name="charname" placeholder="Your Charachters Name Here" />
+      <label for="charname">Character Name</label><input name="charname" placeholder="Your Characters Name Here" />
     </section>
     <section class="misc">
       <ul>
@@ -37,7 +53,7 @@
           <label for="race">Race</label><input name="race" placeholder="Human" />
         </li>
         <li>
-          <label for="alignment">Alignment</label><input name="alignment" placeholder="Nuetral" />
+          <label for="alignment">Alignment</label><input name="alignment" placeholder="Neutral" />
         </li>
         <li>
           <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="0" />
@@ -116,22 +132,22 @@
           <div class="saves list-section box">
             <ul>
               <li>
-                <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" id = "Strength_Save" /><input name="Strength-save-prof" type="checkbox" />
+                <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" id = "Strength_Save" /><input name="Strength-save-prof" type="checkbox" id = "StrengthSaveProf" onclick="ProfCheck('Strength_Save','StrengthSaveProf','Strscore')" />
               </li>
               <li>
-                <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" id="Dex_Save" /><input name="Dexterity-save-prof" type="checkbox" />
+                <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" id="Dex_Save" /><input name="Dexterity-save-prof" type="checkbox" id = "DexSaveProf" onclick="ProfCheck('Dex_Save','DexSaveProf','Dexscore')" />
               </li>
               <li>
-                <label for="Constitution-save">Constitution</label><input name="Constitution-save" placeholder="+0" type="text" id="Con_Save" /><input name="Constitution-save-prof" type="checkbox" />
+                <label for="Constitution-save">Constitution</label><input name="Constitution-save" placeholder="+0" type="text" id="Con_Save" /><input name="Constitution-save-prof" type="checkbox" id = "ConSaveProf" onclick="ProfCheck('Con_Save','ConSaveProf','Conscore')" />
               </li>
               <li>
-                <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" id="Wis_Save" /><input name="Wisdom-save-prof" type="checkbox" />
+                <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" id="Wis_Save" /><input name="Wisdom-save-prof" type="checkbox" id = "WisSaveProf" onclick="ProfCheck('Wis_Save','WisSaveProf','Wisscore')" />
               </li>
               <li>
-                <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" id="Int_Save" /><input name="Intelligence-save-prof" type="checkbox" />
+                <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" id="Int_Save" /><input name="Intelligence-save-prof" type="checkbox" id = "IntSaveProf" onclick="ProfCheck('Int_Save','IntSaveProf','Intscore')" />
               </li>
               <li>
-                <label for="Charisma-save">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" id="Cha_Save" /><input name="Charisma-save-prof" type="checkbox" />
+                <label for="Charisma-save">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" id="Cha_Save" /><input name="Charisma-save-prof" type="checkbox" id = "ChaSaveProf" onclick="ProfCheck('Cha_Save','ChaSaveProf','Chascore')" />
               </li>
             </ul>
             <div class="label">
@@ -141,58 +157,58 @@
           <div class="skills list-section box">
             <ul>
               <li>
-                <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" id="Acrobatics" /><input name="Acrobatics-prof" type="checkbox" />
+                <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" id="Acrobatics" /><input name="Acrobatics-prof" type="checkbox" id = "AcrobaticsProf" onclick="ProfCheck('Acrobatics','AcrobaticsProf','Dexscore')" />
               </li>
               <li>
-                <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" id="Animal_Handling" /><input name="Animal Handling-prof" type="checkbox" />
+                <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" id="Animal_Handling" /><input name="Animal Handling-prof" type="checkbox" id = "Animal_HandlingProf" onclick="ProfCheck('Animal_Handling','Animal_HandlingProf','Wisscore')" />
               </li>
               <li>
-                <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" id="Arcana" /><input name="Arcana-prof" type="checkbox" />
+                <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" id="Arcana" /><input name="Arcana-prof" type="checkbox" id = "ArcanaProf" onclick="ProfCheck('Arcana','ArcanaProf','Intscore')" />
               </li>
               <li>
-                <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" id="Athletics" /><input name="Athletics-prof" type="checkbox" />
+                <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" id="Athletics" /><input name="Athletics-prof" type="checkbox" id = "AthleticsProf" onclick="ProfCheck('Athletics','AthleticsProf','Strscore')" />
               </li>
               <li>
-                <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" id="Deception" /><input name="Deception-prof" type="checkbox" />
+                <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" id="Deception" /><input name="Deception-prof" type="checkbox" id = "DeceptionProf" onclick="ProfCheck('Deception','DeceptionProf','Chascore')" />
               </li>
               <li>
-                <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" id="History" /><input name="History-prof" type="checkbox" />
+                <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" id="History" /><input name="History-prof" type="checkbox" id = "HistoryProf" onclick="ProfCheck('History','HistoryProf','Intscore')" />
               </li>
               <li>
-                <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" id="Insight" /><input name="Insight-prof" type="checkbox" />
+                <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" id="Insight" /><input name="Insight-prof" type="checkbox" id = "InsightProf" onclick="ProfCheck('Insight','InsightProf','Wisscore')" />
               </li>
               <li>
-                <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" id="Intimidation" /><input name="Intimidation-prof" type="checkbox" />
+                <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" id="Intimidation" /><input name="Intimidation-prof" type="checkbox" id = "IntimidationProf" onclick="ProfCheck('Intimidation','IntimidationProf','Chascore')" />
               </li>
               <li>
-                <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" id="Investigation" /><input name="Investigation-prof" type="checkbox" />
+                <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" id="Investigation" /><input name="Investigation-prof" type="checkbox" id = "InvestigationProf" onclick="ProfCheck('Investigation','InvestigationProf','Intscore')" />
               </li>
               <li>
-                <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" id="Medicine" /><input name="Medicine-prof" type="checkbox" />
+                <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" id="Medicine" /><input name="Medicine-prof" type="checkbox" id = "MedicineProf" onclick="ProfCheck('Medicine','MedicineProf','Wisscore')" />
               </li>
               <li>
-                <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" id="Nature" /><input name="Nature-prof" type="checkbox" />
+                <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" id="Nature" /><input name="Nature-prof" type="checkbox" id = "NatureProf" onclick="ProfCheck('Nature','NatureProf','Intscore')" />
               </li>
               <li>
-                <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" id="Perception" /><input name="Perception-prof" type="checkbox" />
+                <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" id="Perception" /><input name="Perception-prof" type="checkbox" id = "PerceptionProf" onclick="ProfCheck('Perception','PerceptionProf','Wisscore')" />
               </li>
               <li>
-                <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" id="Performance" /><input name="Performance-prof" type="checkbox" />
+                <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" id="Performance" /><input name="Performance-prof" type="checkbox" id = "PerformanceProf" onclick="ProfCheck('Performance','PerformanceProf','Chascore')" />
               </li>
               <li>
-                <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" id="Persuasion" /><input name="Persuasion-prof" type="checkbox" />
+                <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" id="Persuasion" /><input name="Persuasion-prof" type="checkbox" id = "PersuasionProf" onclick="ProfCheck('Persuasion','PersuasionProf','Chascore')" />
               </li>
               <li>
-                <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" id="Religion" /><input name="Religion-prof" type="checkbox" />
+                <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" id="Religion" /><input name="Religion-prof" type="checkbox" id = "ReligionProf" onclick="ProfCheck('Religion','ReligionProf','Intscore')" />
               </li>
               <li>
-                <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" id="Sleight_of_Hand" /><input name="Sleight of Hand-prof" type="checkbox" />
+                <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" id="Sleight_of_Hand" /><input name="Sleight of Hand-prof" type="checkbox" id = "Sleight_of_HandProf" onclick="ProfCheck('Sleight_of_Hand','Sleight_of_HandProf','Dexscore')" />
               </li>
               <li>
-                <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" id="Stealth" /><input name="Stealth-prof" type="checkbox" />
+                <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" id="Stealth" /><input name="Stealth-prof" type="checkbox" id = "StealthProf" onclick="ProfCheck('Stealth','StealthProf','Dexscore')" />
               </li>
               <li>
-                <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" id="Survival" /><input name="Survival-prof" type="checkbox" />
+                <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" id="Survival" /><input name="Survival-prof" type="checkbox" id = "SurvivalProf" onclick="ProfCheck('Survival','SurvivalProf','Wisscore')" />
               </li>
             </ul>
             <div class="label">
@@ -220,7 +236,7 @@
         </div>
         <div class="initiative">
           <div>
-            <label for="initiative">Initiative</label><input name="initiative" placeholder="+0" type="text" />
+            <label for="initiative">Initiative</label><input name="initiative" placeholder="+0" type="text" id="Initiative" />
           </div>
         </div>
         <div class="speed">
