@@ -1,0 +1,87 @@
+<!Doctype html>
+<html>
+<script src="KnockbackCalculator.js" type="text/javascript"></script>
+<head>
+    <title>
+    Knockback Calculator
+    </title>
+    </head>
+<body>
+    <h1 id="title">
+    Ian's quick and dirty knockback calculator
+    </h1>
+    <h5>
+      (banged out in a couple hours, will improve eventually)
+    </h5>
+    <label for "knockbackDamageTotal">Total damage of attack (max 3 digits)</label>
+    <input type = "number" id = "knockbackDamageTotal" required min="1" max="999" value="20">
+    <br>
+    <label for "knockBackRank">Rank of knockback (hopefully it's not ten?)</label>
+    <select id = "knockBackRank">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <br>
+    <label for="targetMassDecrease"> Rank of Target mass decrease</label>
+    <select id = "targetMassDecrease">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <br>
+    <label for="targetArmor"> Rank of Target armor</label>
+    <select id = "targetArmor">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <br>
+    <label for "objectDensity">Density of objects in area</label>
+    <select id="objectDensity">
+      <option value = ".1">Sparse (Flat Desert)</option>
+      <option value = ".5">Rare (Public Park)</option>
+      <option value = "1">Average (Small Town)</option>
+      <option value = "5">Frequent (City)</option>
+      <option value = "10">Extreme (Building)</option>
+    </select>
+    <br>
+    <label for="customDensity">Custom Object Density (for reference .1 is sparse, and 10 is extreme)</label>
+    <input type ="number" id="customDensity" min=".05" max="20"> </input>
+    <input type="checkbox" id="useCustomDensity">Use Custom Density?
+    <br>
+    <input type="checkbox" id="suggestObjects" checked>Unimplemented, requires loads of data entry, would suggest objects that are destroyed.</input>
+    <br>
+    <button onclick="calculateKnockback()"> Calculate </button>
+    <br>
+    <br>
+    <p id = output>test</p>
+
+
+
+
+    </body>
+</html>
